@@ -28,6 +28,13 @@ import { errorMiddleware } from "./middlewares/error.middlware.js";
 
 app.use(errorMiddleware);
 
+app.get('/',(req,res)=>{
+  res.send({
+    actiiveStatus:true,
+    error:false,
+  })
+})
+
 server.listen(PORT, () => {
   console.log(`your server listening at port ${PORT}`);
 });
