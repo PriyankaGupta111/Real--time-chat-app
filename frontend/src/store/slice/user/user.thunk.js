@@ -59,6 +59,7 @@ export const logoutUserThunk = createAsyncThunk(
   }
 );
 
+
 export const getUserProfileThunk = createAsyncThunk(
   "user/getProfile",
   async (_, { rejectWithValue }) => {

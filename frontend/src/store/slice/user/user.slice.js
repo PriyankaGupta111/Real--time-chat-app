@@ -35,15 +35,10 @@ export const userSlice = createSlice({
       state.isAuthenticated = true;
       state.buttonLoading = false;
     });
-    // builder.addCase(loginUserThunk.rejected, (state, action) => {
-    //   state.buttonLoading = false;
-    // });
-    builder.addCase(getUserProfileThunk.rejected, (state, action) => {
-  state.screenLoading = false;
-  state.isAuthenticated = false;
-  state.userProfile = null;
-});
-
+    builder.addCase(loginUserThunk.rejected, (state, action) => {
+      state.buttonLoading = false;
+    });
+   
 
     // register user
     builder.addCase(registerUserThunk.pending, (state, action) => {
@@ -104,3 +99,99 @@ export const userSlice = createSlice({
 export const { setSelectedUser } = userSlice.actions;
 
 export default userSlice.reducer;
+
+// import { createSlice } from "@reduxjs/toolkit";
+// import {
+//   getOtherUsersThunk,
+//   getUserProfileThunk,
+//   loginUserThunk,
+//   logoutUserThunk,
+//   registerUserThunk,
+// } from "./user.thunk";
+
+// const initialState = {
+//   isAuthenticated: false,
+//   userProfile: null,
+//   otherUsers: null,
+//   selectedUser: JSON.parse(localStorage.getItem("selectedUser")),
+//   buttonLoading: false,
+//   screenLoading: true,
+// };
+
+// export const userSlice = createSlice({
+//   name: "user",
+//   initialState,
+//   reducers: {
+//     setSelectedUser: (state, action) => {
+//       localStorage.setItem("selectedUser", JSON.stringify(action.payload));
+//       state.selectedUser = action.payload;
+//     },
+//   },
+//   extraReducers: (builder) => {
+//     // 🔹 LOGIN
+//     builder.addCase(loginUserThunk.pending, (state) => {
+//       state.buttonLoading = true;
+//     });
+//     builder.addCase(loginUserThunk.fulfilled, (state, action) => {
+//       state.userProfile = action.payload?.responseData?.user;
+//       state.isAuthenticated = true;
+//       state.buttonLoading = false;
+//     });
+//     builder.addCase(loginUserThunk.rejected, (state) => {
+//       state.buttonLoading = false;
+//     });
+
+//     // 🔹 REGISTER
+//     builder.addCase(registerUserThunk.pending, (state) => {
+//       state.buttonLoading = true;
+//     });
+//     builder.addCase(registerUserThunk.fulfilled, (state, action) => {
+//       state.userProfile = action.payload?.responseData?.user;
+//       state.isAuthenticated = true;
+//       state.buttonLoading = false;
+//     });
+//     builder.addCase(registerUserThunk.rejected, (state) => {
+//       state.buttonLoading = false;
+//     });
+
+//     // 🔹 LOGOUT
+//     builder.addCase(logoutUserThunk.fulfilled, (state) => {
+//       state.userProfile = null;
+//       state.selectedUser = null;
+//       state.otherUsers = null;
+//       state.isAuthenticated = false;
+//       state.buttonLoading = false;
+//       localStorage.clear();
+//     });
+
+//     // 🔹 GET USER PROFILE (🔥 MOST IMPORTANT)
+//     builder.addCase(getUserProfileThunk.pending, (state) => {
+//       state.screenLoading = true;
+//     });
+//     builder.addCase(getUserProfileThunk.fulfilled, (state, action) => {
+//       state.userProfile = action.payload?.responseData;
+//       state.isAuthenticated = true;
+//       state.screenLoading = false;
+//     });
+//     builder.addCase(getUserProfileThunk.rejected, (state) => {
+//       state.userProfile = null;
+//       state.isAuthenticated = false;
+//       state.screenLoading = false;
+//     });
+
+//     // 🔹 GET OTHER USERS
+//     builder.addCase(getOtherUsersThunk.pending, (state) => {
+//       state.screenLoading = true;
+//     });
+//     builder.addCase(getOtherUsersThunk.fulfilled, (state, action) => {
+//       state.otherUsers = action.payload?.responseData;
+//       state.screenLoading = false;
+//     });
+//     builder.addCase(getOtherUsersThunk.rejected, (state) => {
+//       state.screenLoading = false;
+//     });
+//   },
+// });
+
+// export const { setSelectedUser } = userSlice.actions;
+// export default userSlice.reducer;
