@@ -10,7 +10,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://real-time-chat-app-eosin-psi.vercel.app"
+      "https://real-time-chat-i1142i5it-priyanka-guptas-projects-b28ab884.vercel.app/"
     ],
     credentials: true,
   })
