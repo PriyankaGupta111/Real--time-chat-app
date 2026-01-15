@@ -35,9 +35,15 @@ export const userSlice = createSlice({
       state.isAuthenticated = true;
       state.buttonLoading = false;
     });
-    builder.addCase(loginUserThunk.rejected, (state, action) => {
-      state.buttonLoading = false;
-    });
+    // builder.addCase(loginUserThunk.rejected, (state, action) => {
+    //   state.buttonLoading = false;
+    // });
+    builder.addCase(getUserProfileThunk.rejected, (state, action) => {
+  state.screenLoading = false;
+  state.isAuthenticated = false;
+  state.userProfile = null;
+});
+
 
     // register user
     builder.addCase(registerUserThunk.pending, (state, action) => {
