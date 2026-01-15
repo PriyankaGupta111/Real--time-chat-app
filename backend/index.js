@@ -8,7 +8,10 @@ dbConnect()
 
 app.use(
   cors({
-    origin: "http://localhost:5173","real-time-chat-app-eosin-psi.vercel.app"
+    origin: [
+      "http://localhost:5173",
+      "https://real-time-chat-app-eosin-psi.vercel.app"
+    ],
     credentials: true,
   })
 );
